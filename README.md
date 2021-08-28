@@ -21,3 +21,6 @@ This plugin adds a Random button to every category in the Character Maker.
 
 **Notes:**
 * Needs https://github.com/BepInEx/BepInEx for the plugin.
+
+**Credits:**
+* Thanks to Conquestus#1112 for commissioning this plugin and making it available for everyone to use.
