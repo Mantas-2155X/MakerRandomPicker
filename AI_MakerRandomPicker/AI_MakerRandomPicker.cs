@@ -10,7 +10,7 @@ namespace AI_MakerRandomPicker
     [BepInPlugin(nameof(AI_MakerRandomPicker), nameof(AI_MakerRandomPicker), VERSION)]
     public class AI_MakerRandomPicker : BaseUnityPlugin
     {
-        public const string VERSION = "1.0.0";
+        public const string VERSION = "1.1.0";
 
         private void Awake()
         {

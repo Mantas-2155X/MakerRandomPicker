@@ -9,7 +9,7 @@ namespace HS2_MakerRandomPicker
     [BepInPlugin(nameof(HS2_MakerRandomPicker), nameof(HS2_MakerRandomPicker), VERSION)]
     public class HS2_MakerRandomPicker : BaseUnityPlugin
     {
-        public const string VERSION = "1.0.0";
+        public const string VERSION = "1.1.0";
 
         private void Awake()
         {
