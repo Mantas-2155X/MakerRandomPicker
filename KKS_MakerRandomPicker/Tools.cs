@@ -139,7 +139,7 @@ namespace KKS_MakerRandomPicker
                 return;
 
             var titleRect = title.GetComponent<RectTransform>();
-            titleRect.offsetMax = new Vector2(0, -8);
+            titleRect.offsetMax = new Vector2(20, -8);
         }
     }
 }
