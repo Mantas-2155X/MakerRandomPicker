@@ -1,5 +1,4 @@
-﻿using System;
-using BepInEx;
+﻿using BepInEx;
 using CharaCustom;
 using HarmonyLib;
 using Random = UnityEngine.Random;
@@ -15,7 +14,6 @@ namespace AI_MakerRandomPicker
 
         private void Awake()
         {
-            Random.InitState(Convert.ToInt32(DateTimeOffset.Now.ToUnixTimeSeconds()));
             Harmony.CreateAndPatchAll(typeof(Hooks));
         }
 
@@ -28,7 +26,7 @@ namespace AI_MakerRandomPicker
                     return;
 
                 var datas = controller.scrollerDatas;
-                var data = datas?[Random.Range(0, datas.Length - 1)];
+                var data = datas?[Random.Range(0, datas.Length)];
 
                 if (data?.info == null)
                     return;
@@ -43,7 +41,7 @@ namespace AI_MakerRandomPicker
                     return;
 
                 var datas = controller.scrollerDatas;
-                var data = datas?[Random.Range(0, datas.Length - 1)];
+                var data = datas?[Random.Range(0, datas.Length)];
 
                 if (data?.info == null)
                     return;
