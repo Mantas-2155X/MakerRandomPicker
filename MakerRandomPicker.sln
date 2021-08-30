@@ -8,6 +8,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KK_MakerRandomPicker", "KK_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KKS_MakerRandomPicker", "KKS_MakerRandomPicker\KKS_MakerRandomPicker.csproj", "{A77F1A35-5EE7-41E4-917B-22452826FF4B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EC_MakerRandomPicker", "EC_MakerRandomPicker\EC_MakerRandomPicker.csproj", "{57E0632B-53A2-4D68-92E0-C40584E1949A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PH_MakerRandomPicker", "PH_MakerRandomPicker\PH_MakerRandomPicker.csproj", "{961A8EBC-4289-4EA0-B2E8-631590183EDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +34,13 @@ Global
 		{A77F1A35-5EE7-41E4-917B-22452826FF4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A77F1A35-5EE7-41E4-917B-22452826FF4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A77F1A35-5EE7-41E4-917B-22452826FF4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57E0632B-53A2-4D68-92E0-C40584E1949A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57E0632B-53A2-4D68-92E0-C40584E1949A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57E0632B-53A2-4D68-92E0-C40584E1949A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57E0632B-53A2-4D68-92E0-C40584E1949A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{961A8EBC-4289-4EA0-B2E8-631590183EDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{961A8EBC-4289-4EA0-B2E8-631590183EDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{961A8EBC-4289-4EA0-B2E8-631590183EDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{961A8EBC-4289-4EA0-B2E8-631590183EDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
