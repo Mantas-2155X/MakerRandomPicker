@@ -20,7 +20,7 @@ This plugin adds a Random button to every category in the Character Maker.
 * You should see `GAME_MakerRandomPicker.dll` in `BepInEx/Plugins/2155X/`.  
 
 **Notes:**
-* [1] Does not apply to PlayHome
+* [1] Does not apply to PlayHome, EmotionCreators
 * Needs https://github.com/BepInEx/BepInEx for the plugin.
 
 **Credits:**
