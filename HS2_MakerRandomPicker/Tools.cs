@@ -1,12 +1,15 @@
+using KKAPI.Maker;
+using KKAPI.Maker.UI;
 using UnityEngine;
 using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
 namespace HS2_MakerRandomPicker
 {
     public static class Tools
     {
         public static readonly object[] controllers = new object[23];
-
+        
         private static readonly string[] targets =
         {
             "CharaCustom/CustomControl/CanvasSub/SettingWindow/WinHair/H_Hair/Setting/Setting01/SelectBox/SelectName",                      // Hair
@@ -64,6 +67,65 @@ namespace HS2_MakerRandomPicker
                 var text = target.transform.Find("SelectText");
                 text.GetComponent<RectTransform>().offsetMax = new Vector2(-105, 0);
             }
+        }
+        
+        public static void MakerAPI_RegisterCustomSubCategories(object sender, RegisterSubCategoriesEvent e)
+        {
+            Randomizer.template = null;
+            
+            var parentCat = MakerConstants.Body.All;
+            var cat = new MakerCategory(parentCat.CategoryName, "MakerRandomPickerCategory", parentCat.Position + 5, "Randomize");
+            e.AddSubCategory(cat);
+
+            e.AddControl(new MakerButton("Set current character as template", cat, HS2_MakerRandomPicker.instance)).OnClick.AddListener(() =>
+            {
+                Randomizer.AssignTemplate(MakerAPI.GetCharacterControl());
+            });
+
+            var randButton = e.AddControl(new MakerButton("Randomize!", cat, HS2_MakerRandomPicker.instance));
+
+            e.AddControl(new MakerSeparator(cat, HS2_MakerRandomPicker.instance));
+            var randomizeBodySliders = e.AddControl(new MakerToggle(cat, "Randomize body sliders", HS2_MakerRandomPicker.instance));
+            var randomizeBody = e.AddControl(new MakerToggle(cat, "Randomize body type", HS2_MakerRandomPicker.instance));
+            var skinColorType = e.AddControl(new MakerRadioButtons(cat, HS2_MakerRandomPicker.instance, "Skin color", "White", "Brown", "Unchanged"));
+
+            e.AddControl(new MakerSeparator(cat, HS2_MakerRandomPicker.instance));
+            var randomizeFaceSliders = e.AddControl(new MakerToggle(cat, "Randomize face sliders", HS2_MakerRandomPicker.instance));
+            var randomizeFace = e.AddControl(new MakerToggle(cat, "Randomize face type", HS2_MakerRandomPicker.instance));
+            var randomizeFaceEyes = e.AddControl(new MakerToggle(cat, "Randomize eyes", HS2_MakerRandomPicker.instance));
+
+            e.AddControl(new MakerSeparator(cat, HS2_MakerRandomPicker.instance));
+            var randomizeHair = e.AddControl(new MakerToggle(cat, "Randomize hair type", HS2_MakerRandomPicker.instance));
+            var randomizeHairMesh = e.AddControl(new MakerToggle(cat, "Randomize hair mesh", HS2_MakerRandomPicker.instance));
+            var randomizeHairColor = e.AddControl(new MakerToggle(cat, "Randomize hair color", HS2_MakerRandomPicker.instance));
+
+            e.AddControl(new MakerSeparator(cat, HS2_MakerRandomPicker.instance));
+            var deviationSlider = e.AddControl(new MakerSlider(cat, "Deviation", 0, 1, 0.1f, HS2_MakerRandomPicker.instance));
+
+            randomizeBodySliders.Value = true;
+            randomizeFaceSliders.Value = true;
+
+            randButton.OnClick.AddListener(() =>
+            {
+                var chara = MakerAPI.GetCharacterControl();
+                
+                if (randomizeBodySliders.Value) 
+                    Randomizer.RandomizeSliders(chara, deviationSlider.Value, Randomizer.RandomizerType.BODY);
+                
+                if (randomizeFaceSliders.Value) 
+                    Randomizer.RandomizeSliders(chara, deviationSlider.Value, Randomizer.RandomizerType.FACE);
+                
+                if (randomizeHair.Value || randomizeHairColor.Value || randomizeHairMesh.Value)
+                    Randomizer.RandomizeHair(chara, randomizeHair.Value, randomizeHairMesh.Value, randomizeHairColor.Value);
+
+                if (randomizeBody.Value)
+                    Randomizer.RandomizeBody(chara, skinColorType.Value);
+
+                if (randomizeFace.Value || randomizeFaceEyes.Value)
+                    Randomizer.RandomizeFace(chara, randomizeFace.Value, randomizeFaceEyes.Value);
+
+                chara.Reload();
+            });
         }
     }
 }

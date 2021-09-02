@@ -1,3 +1,5 @@
+using KKAPI.Maker;
+using KKAPI.Maker.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -64,6 +66,65 @@ namespace AI_MakerRandomPicker
                 var text = target.transform.Find("SelectText");
                 text.GetComponent<RectTransform>().offsetMax = new Vector2(-105, 0);
             }
+        }
+        
+        public static void MakerAPI_RegisterCustomSubCategories(object sender, RegisterSubCategoriesEvent e)
+        {
+            Randomizer.template = null;
+            
+            var parentCat = MakerConstants.Body.All;
+            var cat = new MakerCategory(parentCat.CategoryName, "MakerRandomPickerCategory", parentCat.Position + 5, "Randomize");
+            e.AddSubCategory(cat);
+
+            e.AddControl(new MakerButton("Set current character as template", cat, AI_MakerRandomPicker.instance)).OnClick.AddListener(() =>
+            {
+                Randomizer.AssignTemplate(MakerAPI.GetCharacterControl());
+            });
+
+            var randButton = e.AddControl(new MakerButton("Randomize!", cat, AI_MakerRandomPicker.instance));
+
+            e.AddControl(new MakerSeparator(cat, AI_MakerRandomPicker.instance));
+            var randomizeBodySliders = e.AddControl(new MakerToggle(cat, "Randomize body sliders", AI_MakerRandomPicker.instance));
+            var randomizeBody = e.AddControl(new MakerToggle(cat, "Randomize body type", AI_MakerRandomPicker.instance));
+            var skinColorType = e.AddControl(new MakerRadioButtons(cat, AI_MakerRandomPicker.instance, "Skin color", "White", "Brown", "Unchanged"));
+
+            e.AddControl(new MakerSeparator(cat, AI_MakerRandomPicker.instance));
+            var randomizeFaceSliders = e.AddControl(new MakerToggle(cat, "Randomize face sliders", AI_MakerRandomPicker.instance));
+            var randomizeFace = e.AddControl(new MakerToggle(cat, "Randomize face type", AI_MakerRandomPicker.instance));
+            var randomizeFaceEyes = e.AddControl(new MakerToggle(cat, "Randomize eyes", AI_MakerRandomPicker.instance));
+
+            e.AddControl(new MakerSeparator(cat, AI_MakerRandomPicker.instance));
+            var randomizeHair = e.AddControl(new MakerToggle(cat, "Randomize hair type", AI_MakerRandomPicker.instance));
+            var randomizeHairMesh = e.AddControl(new MakerToggle(cat, "Randomize hair mesh", AI_MakerRandomPicker.instance));
+            var randomizeHairColor = e.AddControl(new MakerToggle(cat, "Randomize hair color", AI_MakerRandomPicker.instance));
+
+            e.AddControl(new MakerSeparator(cat, AI_MakerRandomPicker.instance));
+            var deviationSlider = e.AddControl(new MakerSlider(cat, "Deviation", 0, 1, 0.1f, AI_MakerRandomPicker.instance));
+
+            randomizeBodySliders.Value = true;
+            randomizeFaceSliders.Value = true;
+
+            randButton.OnClick.AddListener(() =>
+            {
+                var chara = MakerAPI.GetCharacterControl();
+                
+                if (randomizeBodySliders.Value) 
+                    Randomizer.RandomizeSliders(chara, deviationSlider.Value, Randomizer.RandomizerType.BODY);
+                
+                if (randomizeFaceSliders.Value) 
+                    Randomizer.RandomizeSliders(chara, deviationSlider.Value, Randomizer.RandomizerType.FACE);
+                
+                if (randomizeHair.Value || randomizeHairColor.Value || randomizeHairMesh.Value)
+                    Randomizer.RandomizeHair(chara, randomizeHair.Value, randomizeHairMesh.Value, randomizeHairColor.Value);
+
+                if (randomizeBody.Value)
+                    Randomizer.RandomizeBody(chara, skinColorType.Value);
+
+                if (randomizeFace.Value || randomizeFaceEyes.Value)
+                    Randomizer.RandomizeFace(chara, randomizeFace.Value, randomizeFaceEyes.Value);
+
+                chara.Reload();
+            });
         }
     }
 }

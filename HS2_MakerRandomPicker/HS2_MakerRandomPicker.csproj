@@ -45,14 +45,30 @@
           <HintPath>..\packages\IllusionLibs.BepInEx.5.4.15\lib\net35\BepInEx.dll</HintPath>
           <Private>false</Private>
         </Reference>
+        <Reference Include="HS2API, Version=1.24.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\packages\IllusionModdingAPI.HS2API.1.24.0\lib\net46\HS2API.dll</HintPath>
+          <Private>false</Private>
+        </Reference>
+        <Reference Include="HS2_ExtensibleSaveFormat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\packages\ExtensibleSaveFormat.HoneySelect2.16.4.0\lib\net46\HS2_ExtensibleSaveFormat.dll</HintPath>
+          <Private>false</Private>
+        </Reference>
         <Reference Include="IL, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\packages\IllusionLibs.HoneySelect2.IL.2020.5.29.4\lib\net46\IL.dll</HintPath>
+          <Private>false</Private>
+        </Reference>
+        <Reference Include="Sirenix.Serialization, Version=2.0.13.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\packages\IllusionLibs.HoneySelect2.Sirenix.Serialization.2020.5.29.4\lib\net46\Sirenix.Serialization.dll</HintPath>
           <Private>false</Private>
         </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
         <Reference Include="System.Xml" />
+        <Reference Include="UniRx, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\packages\IllusionLibs.HoneySelect2.UniRx.2020.5.29.4\lib\net46\UniRx.dll</HintPath>
+          <Private>false</Private>
+        </Reference>
         <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\packages\IllusionLibs.HoneySelect2.UnityEngine.CoreModule.2018.4.11.4\lib\net46\UnityEngine.dll</HintPath>
           <Private>false</Private>
@@ -74,6 +90,7 @@
         <Compile Include="Hooks.cs" />
         <Compile Include="HS2_MakerRandomPicker.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Randomizer.cs" />
         <Compile Include="Tools.cs" />
     </ItemGroup>
     <ItemGroup>
@@ -91,12 +108,16 @@
       <Error Condition="!Exists('..\packages\IllusionLibs.HoneySelect2.UnityEngine.UI.2018.4.11.4\build\IllusionLibs.HoneySelect2.UnityEngine.UI.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\IllusionLibs.HoneySelect2.UnityEngine.UI.2018.4.11.4\build\IllusionLibs.HoneySelect2.UnityEngine.UI.targets'))" />
       <Error Condition="!Exists('..\packages\IllusionLibs.HoneySelect2.UnityEngine.UIModule.2018.4.11.4\build\IllusionLibs.HoneySelect2.UnityEngine.UIModule.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\IllusionLibs.HoneySelect2.UnityEngine.UIModule.2018.4.11.4\build\IllusionLibs.HoneySelect2.UnityEngine.UIModule.targets'))" />
       <Error Condition="!Exists('..\packages\IllusionLibs.HoneySelect2.IL.2020.5.29.4\build\IllusionLibs.HoneySelect2.IL.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\IllusionLibs.HoneySelect2.IL.2020.5.29.4\build\IllusionLibs.HoneySelect2.IL.targets'))" />
+      <Error Condition="!Exists('..\packages\IllusionLibs.HoneySelect2.Sirenix.Serialization.2020.5.29.4\build\IllusionLibs.HoneySelect2.Sirenix.Serialization.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\IllusionLibs.HoneySelect2.Sirenix.Serialization.2020.5.29.4\build\IllusionLibs.HoneySelect2.Sirenix.Serialization.targets'))" />
+      <Error Condition="!Exists('..\packages\IllusionLibs.HoneySelect2.UniRx.2020.5.29.4\build\IllusionLibs.HoneySelect2.UniRx.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\IllusionLibs.HoneySelect2.UniRx.2020.5.29.4\build\IllusionLibs.HoneySelect2.UniRx.targets'))" />
     </Target>
     <Import Project="..\packages\IllusionLibs.HoneySelect2.Assembly-CSharp.2020.5.29.4\build\IllusionLibs.HoneySelect2.Assembly-CSharp.targets" Condition="Exists('..\packages\IllusionLibs.HoneySelect2.Assembly-CSharp.2020.5.29.4\build\IllusionLibs.HoneySelect2.Assembly-CSharp.targets')" />
     <Import Project="..\packages\IllusionLibs.HoneySelect2.UnityEngine.CoreModule.2018.4.11.4\build\IllusionLibs.HoneySelect2.UnityEngine.CoreModule.targets" Condition="Exists('..\packages\IllusionLibs.HoneySelect2.UnityEngine.CoreModule.2018.4.11.4\build\IllusionLibs.HoneySelect2.UnityEngine.CoreModule.targets')" />
     <Import Project="..\packages\IllusionLibs.HoneySelect2.UnityEngine.UI.2018.4.11.4\build\IllusionLibs.HoneySelect2.UnityEngine.UI.targets" Condition="Exists('..\packages\IllusionLibs.HoneySelect2.UnityEngine.UI.2018.4.11.4\build\IllusionLibs.HoneySelect2.UnityEngine.UI.targets')" />
     <Import Project="..\packages\IllusionLibs.HoneySelect2.UnityEngine.UIModule.2018.4.11.4\build\IllusionLibs.HoneySelect2.UnityEngine.UIModule.targets" Condition="Exists('..\packages\IllusionLibs.HoneySelect2.UnityEngine.UIModule.2018.4.11.4\build\IllusionLibs.HoneySelect2.UnityEngine.UIModule.targets')" />
     <Import Project="..\packages\IllusionLibs.HoneySelect2.IL.2020.5.29.4\build\IllusionLibs.HoneySelect2.IL.targets" Condition="Exists('..\packages\IllusionLibs.HoneySelect2.IL.2020.5.29.4\build\IllusionLibs.HoneySelect2.IL.targets')" />
+    <Import Project="..\packages\IllusionLibs.HoneySelect2.Sirenix.Serialization.2020.5.29.4\build\IllusionLibs.HoneySelect2.Sirenix.Serialization.targets" Condition="Exists('..\packages\IllusionLibs.HoneySelect2.Sirenix.Serialization.2020.5.29.4\build\IllusionLibs.HoneySelect2.Sirenix.Serialization.targets')" />
+    <Import Project="..\packages\IllusionLibs.HoneySelect2.UniRx.2020.5.29.4\build\IllusionLibs.HoneySelect2.UniRx.targets" Condition="Exists('..\packages\IllusionLibs.HoneySelect2.UniRx.2020.5.29.4\build\IllusionLibs.HoneySelect2.UniRx.targets')" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.
     <Target Name="BeforeBuild">

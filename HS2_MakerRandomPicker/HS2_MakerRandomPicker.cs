@@ -1,6 +1,7 @@
 ﻿using BepInEx;
 using CharaCustom;
 using HarmonyLib;
+using KKAPI.Maker;
 using Random = UnityEngine.Random;
 
 namespace HS2_MakerRandomPicker
@@ -11,8 +12,13 @@ namespace HS2_MakerRandomPicker
     {
         public const string VERSION = "1.1.0";
 
+        public static HS2_MakerRandomPicker instance;
+
         private void Awake()
         {
+            instance = this;
+            
+            MakerAPI.RegisterCustomSubCategories += Tools.MakerAPI_RegisterCustomSubCategories;
             Harmony.CreateAndPatchAll(typeof(Hooks));
         }
 

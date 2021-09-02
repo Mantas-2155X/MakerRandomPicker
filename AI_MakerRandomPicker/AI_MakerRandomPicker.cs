@@ -1,6 +1,7 @@
 ﻿using BepInEx;
 using CharaCustom;
 using HarmonyLib;
+using KKAPI.Maker;
 using Random = UnityEngine.Random;
 
 namespace AI_MakerRandomPicker
@@ -12,8 +13,13 @@ namespace AI_MakerRandomPicker
     {
         public const string VERSION = "1.1.0";
 
+        public static AI_MakerRandomPicker instance;
+
         private void Awake()
         {
+            instance = this;
+            
+            MakerAPI.RegisterCustomSubCategories += Tools.MakerAPI_RegisterCustomSubCategories;
             Harmony.CreateAndPatchAll(typeof(Hooks));
         }
 
