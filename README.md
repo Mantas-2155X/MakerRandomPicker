@@ -7,6 +7,7 @@ This plugin adds a Random button to every category in the Character Maker.
 **Features:**  
 * Random button in every category
 * Automatically scroll to the random selection [1]
+* Random character generation (body, face, hair at the same time) [2]
 
 **Usage:**  
 * Open the charamaker, respective UI category  
@@ -21,7 +22,9 @@ This plugin adds a Random button to every category in the Character Maker.
 
 **Notes:**
 * [1] Does not apply to PlayHome, EmotionCreators
+* [2] Only for AI and HS2
 * Needs https://github.com/BepInEx/BepInEx for the plugin.
 
 **Credits:**
 * Thanks to Conquestus#1112 for commissioning this plugin and making it available for everyone to use.
+* Thanks to That_Dude79#8202 for commissioning the random character generation part.
