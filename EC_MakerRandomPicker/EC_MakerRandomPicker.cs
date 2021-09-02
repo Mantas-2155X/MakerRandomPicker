@@ -10,7 +10,7 @@ namespace EC_MakerRandomPicker
     [BepInPlugin(nameof(EC_MakerRandomPicker), nameof(EC_MakerRandomPicker), VERSION)]
     public class EC_MakerRandomPicker : BaseUnityPlugin
     {
-        public const string VERSION = "1.1.0";
+        public const string VERSION = "1.2.0";
         
         public static CustomSelectListCtrl controller;
         
