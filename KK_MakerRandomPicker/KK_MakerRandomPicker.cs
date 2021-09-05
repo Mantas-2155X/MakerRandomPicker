@@ -2,6 +2,7 @@
 using HarmonyLib;
 using BepInEx;
 using ChaCustom;
+using KKAPI.Maker;
 using Random = UnityEngine.Random;
 
 namespace KK_MakerRandomPicker
@@ -11,12 +12,16 @@ namespace KK_MakerRandomPicker
     [BepInPlugin(nameof(KK_MakerRandomPicker), nameof(KK_MakerRandomPicker), VERSION)]
     public class KK_MakerRandomPicker : BaseUnityPlugin
     {
-        public const string VERSION = "1.2.0";
+        public const string VERSION = "1.3.0";
         
+        public static KK_MakerRandomPicker instance;
         public static CustomSelectListCtrl controller;
         
         private void Awake()
         {
+            instance = this;
+            
+            MakerAPI.RegisterCustomSubCategories += Tools.MakerAPI_RegisterCustomSubCategories;
             Harmony.CreateAndPatchAll(typeof(Hooks));
         }
         

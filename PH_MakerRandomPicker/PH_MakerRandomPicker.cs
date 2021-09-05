@@ -10,7 +10,7 @@ namespace PH_MakerRandomPicker
     [BepInPlugin(nameof(PH_MakerRandomPicker), nameof(PH_MakerRandomPicker), VERSION)]
     public class PH_MakerRandomPicker : BaseUnityPlugin
     {
-        public const string VERSION = "1.2.0";
+        public const string VERSION = "1.3.0";
         
         private void Awake()
         {
