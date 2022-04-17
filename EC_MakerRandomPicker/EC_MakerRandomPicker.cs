@@ -21,7 +21,7 @@ namespace EC_MakerRandomPicker
             instance = this;
             
             MakerAPI.RegisterCustomSubCategories += Tools.MakerAPI_RegisterCustomSubCategories;
-            Harmony.CreateAndPatchAll(typeof(Hooks));
+            Harmony.CreateAndPatchAll(typeof(Hooks), "MakerRandomPicker");
         }
         
         public static void PickRandomItem()
