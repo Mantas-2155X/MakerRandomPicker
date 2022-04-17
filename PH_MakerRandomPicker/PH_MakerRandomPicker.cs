@@ -14,7 +14,7 @@ namespace PH_MakerRandomPicker
         
         private void Awake()
         {
-            Harmony.CreateAndPatchAll(typeof(Hooks));
+            Harmony.CreateAndPatchAll(typeof(Hooks), "MakerRandomPicker");
         }
         
         public static void PickRandomItem(ThumbnailSelectUI controller)
