@@ -11,7 +11,7 @@ namespace KKS_MakerRandomPicker
     [BepInPlugin(nameof(KKS_MakerRandomPicker), nameof(KKS_MakerRandomPicker), VERSION)]
     public class KKS_MakerRandomPicker : BaseUnityPlugin
     {
-        public const string VERSION = "1.3.0";
+        public const string VERSION = "1.3.1";
         
         public static KKS_MakerRandomPicker instance;
         public static CustomSelectListCtrl controller;
